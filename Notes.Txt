@@ -1,0 +1,30 @@
+writer.cpp
+
+Se crean instancias de WriterAction y Thread 
+dentro del constructor de Writer, se usa writerAction para inicializar Thread,
+El destructor elimina las instancias de writerAction y thread
+
+    original:
+    __fastcall Writer::Writer(void) : Thread(writerAction = new WriterAction(this, &Writer::write)) {
+    }
+
+    __fastcall Writer::~Writer(void) {
+        if (writerAction) delete writerAction;
+    }
+
+    modificado:
+    __fastcall Writer::Writer(void)
+        : writerAction(new WriterAction(this, &Writer::write)), thread(new Thread(writerAction)) {
+    }
+
+    __fastcall Writer::~Writer(void) {
+        delete writerAction;
+        delete thread;
+    }
+
+Se crea una instancia de WriterAction dentro del constructor de Writer
+Los metodos, que estaban definidos en writer, se mantienen, pero se llaman en thread para e
+
+writer.h
+
+Writer contiene las instancias de Thread y WriterAction como miembros privados
