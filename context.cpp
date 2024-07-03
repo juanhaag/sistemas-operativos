@@ -29,17 +29,14 @@
 
 int _tmain(int argc, _TCHAR* argv[]) {
     Writer writer;
-    Writer writer2;
+    getch() ;
     writer.start();
-    writer2.start();
-    writer.terminateAndWait();
-    writer2.terminateAndWait(); 
-    writer.
-
     for (int i = 0; i < 100; i++) {
         std::cout << "\t\tMain working ..." << std::endl;
         ::Sleep(15);
     }
-
+    writer.stop();
+    getch();
+    writer.terminateAndWait();
     return 0;
 }
