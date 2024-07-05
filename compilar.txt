@@ -1,1 +1,0 @@
-g++ action.cpp context.cpp thread.cpp writer.cpp -o main.exe

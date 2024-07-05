@@ -13,8 +13,25 @@
 #ifndef actionH
 #define actionH
 
+class Writer;
+
 struct Action {
-	virtual unsigned long __fastcall execute( void ) = 0 ;
-} ;
+    virtual unsigned long __fastcall execute(void) = 0;
+};
+
+class WriterAction : public Action {
+public:
+    typedef unsigned long (Writer::* Method)(void);
+
+    __fastcall WriterAction(Writer* writer, Method method);
+    __fastcall ~WriterAction(void);
+
+    virtual unsigned long __fastcall execute(void) override;
+
+private:
+    Writer* writer;
+    Method method;
+};
+
 
 #endif

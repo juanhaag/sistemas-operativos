@@ -11,44 +11,31 @@
 
         Ciclo 2009
 */
-#ifndef writerH
-#define writerH
+#ifndef writer_h
+#define writer_h
 
 #include "action.h"
 #include "thread.h"
+#include <iostream>
 
-class Writer ;
-
-class WriterAction : public Action {
-
-	typedef unsigned long __fastcall ( Writer::* Method )( void ) ;
-
+class Writer {
 public:
-	__fastcall WriterAction( Writer* writer, Method method ) ;
-	__fastcall ~WriterAction( void ) ;
+    __fastcall Writer(void);
+    __fastcall ~Writer(void);
 
-	virtual unsigned long __fastcall execute( void ) ;
+    void __fastcall start(void);
+    void __fastcall stop(void);
+    void __fastcall exit(void);
+    void __fastcall terminateAndWait(void);
+    bool __fastcall isRunning(void);
+    bool __fastcall isTerminated(void);
+    bool __fastcall isAlive(void);
+
 private:
-	Writer* object ;
-	Method function ;
-} ;
+    Thread* thread;
+    WriterAction* writerAction;
 
-class Writer{
-public:
-	__fastcall Writer( void ) ;
-	__fastcall ~Writer( void ) ;
-
-	void __fastcall start( void ) ;
-	void __fastcall stop( void ) ;
-	void __fastcall exit( void ) ;
-	void __fastcall terminateAndWait( void ) ;
-	bool __fastcall isRunnig( void ) ;
-	bool __fastcall isTerminated( void ) ;
-	bool __fastcall isAlive( void ) ;
-private:
-	Thread* thread;
-	WriterAction* writerAction ;
-	unsigned long __fastcall write( void ) ;
-} ;
+    unsigned long __fastcall write(void);
+};
 
 #endif

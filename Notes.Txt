@@ -1,0 +1,4 @@
+Utilizacion de reuso
+
+Crear una interfaz que realice tareas independientemente las acciones que se necesiten realizar 
+(por ejemplo creacion de writer, thread, o lo necesario)

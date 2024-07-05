@@ -28,18 +28,15 @@
 #include "writer.h"
 
 int _tmain(int argc, _TCHAR* argv[]) {
-
-
-	Writer writer ;
-	getch() ;
-	writer.start() ;
-	for ( int i = 0; i < 100 ; i++ ) {
-		std::cout <<  "\t\tMain working ..." << std::endl ;
-        ::Sleep( 15 );
-	} ;
-	writer.stop() ;
-	getch() ;
-	writer.terminateAndWait() ;
-
-	return 0;
+    Writer writer;
+    getch() ;
+    writer.start();
+    for (int i = 0; i < 100; i++) {
+        std::cout << "\t\tMain working ..." << std::endl;
+        ::Sleep(15);
+    }
+    writer.stop();
+    getch();
+    writer.terminateAndWait();
+    return 0;
 }
